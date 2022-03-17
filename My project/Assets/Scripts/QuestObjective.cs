@@ -18,13 +18,11 @@ public class QuestObjective : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pickupText.enabled == true)
-        {
-            canPickUp = true;
-        }
         if (canPickUp == true && Input.GetKeyDown(KeyCode.E))
         {
             pickupText.enabled = false;
+            FindObjectOfType<ObjectiveTracker>().ObjectiveCollected();
+            canPickUp = false;
             Destroy(gameObject);
         }
     }
@@ -34,6 +32,7 @@ public class QuestObjective : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             pickupText.enabled = true;
+            canPickUp = true;
         }
     }
 
@@ -42,6 +41,7 @@ public class QuestObjective : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             pickupText.enabled = false;
+            canPickUp = false;
         }
     }
 }
