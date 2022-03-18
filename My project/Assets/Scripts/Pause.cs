@@ -27,5 +27,10 @@ public class Pause : MonoBehaviour
             canvas.enabled = false;
             Time.timeScale = 1;
         }
+
+        if (Time.timeScale == 1)
+        {
+            canvas.enabled = false;
+        }
     }
 }
