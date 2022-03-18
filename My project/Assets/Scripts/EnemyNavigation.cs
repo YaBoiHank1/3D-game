@@ -14,6 +14,7 @@ public class EnemyNavigation : MonoBehaviour
     private NavMeshAgent agent;
     private float timer;
     private float speed;
+    public bool lightHit;
     Vector3 home;
     // Start is called before the first frame update
     void Start()
@@ -32,34 +33,49 @@ public class EnemyNavigation : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= wanderTimer)
+        if (!lightHit)
         {
-            Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
-            agent.SetDestination(newPos);
-            timer = 0;
-        }
-
-        float distance = Vector3.Distance(transform.position, player.transform.position);
-        if (distance > chaseRange && distance < searchRange)
-        {
-            StartCoroutine(Search());
-            GetComponent<NavMeshAgent>().speed = 3f;
-            Debug.Log("Inside Search Range");
-        }
-        if(distance < chaseRange)
-        {
-            GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
-            GetComponent<NavMeshAgent>().speed = 6f;
-            Debug.Log("Inside Chase Range");
+            if (timer >= wanderTimer)
+            {
+                Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
+                agent.SetDestination(newPos);
+                timer = 0;
+            }
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+            if (distance > chaseRange && distance < searchRange)
+            {
+                StartCoroutine(Search());
+                GetComponent<NavMeshAgent>().speed = 3f;
+                Debug.Log("Inside Search Range");
+            }
+            if (distance < chaseRange)
+            {
+                GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
+                GetComponent<NavMeshAgent>().speed = 6f;
+                Debug.Log("Inside Chase Range");
+            }
+            else
+            {
+                //GetComponent<NavMeshAgent>().SetDestination(home);
+                //Debug.Log("Returning to Wandering");
+                GetComponent<NavMeshAgent>().speed = 2f;
+                return;
+            }
         }
         else
         {
-            //GetComponent<NavMeshAgent>().SetDestination(home);
-            //Debug.Log("Returning to Wandering");
-            GetComponent<NavMeshAgent>().speed = 2f;
             return;
         }
         
+        
+    }
+
+    public void Chase()
+    {
+        lightHit = true;
+        GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
+        GetComponent<NavMeshAgent>().speed = 6f;
+        Debug.Log("Hit by Flashlight");
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)

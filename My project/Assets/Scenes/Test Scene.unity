@@ -884,7 +884,7 @@ GameObject:
   - component: {fileID: 1089744826}
   m_Layer: 0
   m_Name: Enemy Placeholder
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -906,6 +906,7 @@ MonoBehaviour:
   searchRange: 30
   wanderRadius: 50
   wanderTimer: 10
+  lightHit: 0
 --- !u!195 &1089744827
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1059,10 +1060,6 @@ PrefabInstance:
     - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 718548199, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
-      propertyPath: m_Range
-      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
