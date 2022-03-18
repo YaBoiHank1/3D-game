@@ -5,7 +5,7 @@ using UnityEngine;
 public class cPrecision : MonoBehaviour
 {
     private Material material;
-    public int colorPrecision = 64;
+    public int colorPrecision = 255;
     public bool usePalette = false;
     public Texture2D palette;
    
