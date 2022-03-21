@@ -11,6 +11,11 @@ public class SceneLoader : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void Play()
+    {
+        SceneManager.LoadScene(1);
+    }
+
     public void MainMenu()
     {
         SceneManager.LoadScene(0);

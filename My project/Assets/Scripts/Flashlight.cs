@@ -26,9 +26,10 @@ public class Flashlight : MonoBehaviour
         }
         RaycastHit hit;
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        if (Physics.Raycast(ray, out hit, 240))
+        Debug.DrawRay(transform.position, transform.forward, Color.red, 0.1f);
+        if (Physics.Raycast(ray, out hit, 200))
         {
-            Debug.DrawLine(transform.position, hit.point, Color.red);
+            
             if (hit.collider != null)
             {
                 
