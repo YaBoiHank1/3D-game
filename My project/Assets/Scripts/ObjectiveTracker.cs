@@ -23,7 +23,7 @@ public class ObjectiveTracker : MonoBehaviour
     {
         if (!goal1Done)
         {
-            objectiveText.text = "Find 5 Barrels " + collected.ToString() + "/" + goal1.ToString();
+            objectiveText.text = "Find Gas Cans " + collected.ToString() + "/" + goal1.ToString();
         }
         else if (goal1Done)
         {
