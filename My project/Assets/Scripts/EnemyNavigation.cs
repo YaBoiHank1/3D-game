@@ -15,12 +15,15 @@ public class EnemyNavigation : MonoBehaviour
     private float timer;
     private float speed;
     public bool lightHit;
+    public AudioSource audioSource;
+    public AudioClip chaseSFX;
     Vector3 home;
     // Start is called before the first frame update
     void Start()
     {
         home = transform.position;
         speed = GetComponent<NavMeshAgent>().speed;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -50,8 +53,13 @@ public class EnemyNavigation : MonoBehaviour
             }
             if (distance < chaseRange)
             {
+                
                 GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
                 GetComponent<NavMeshAgent>().speed = 6f;
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.PlayOneShot(chaseSFX);
+                }
                 Debug.Log("Inside Chase Range");
             }
             else
@@ -75,6 +83,10 @@ public class EnemyNavigation : MonoBehaviour
         lightHit = true;
         GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
         GetComponent<NavMeshAgent>().speed = 6f;
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(chaseSFX);
+        }
         Debug.Log("Hit by Flashlight");
     }
 

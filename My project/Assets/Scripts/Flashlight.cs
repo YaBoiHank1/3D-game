@@ -10,7 +10,6 @@ public class Flashlight : MonoBehaviour
     void Start()
     {
         flashlight = GetComponent<Light>();
-        
     }
 
     // Update is called once per frame
@@ -37,6 +36,7 @@ public class Flashlight : MonoBehaviour
                 {
                     if (hit.collider.gameObject.GetComponent<EnemyNavigation>() != null)
                     {
+                        
                         hit.collider.gameObject.GetComponent<EnemyNavigation>().Chase();
                     }
                     else
