@@ -5,11 +5,14 @@ using UnityEngine;
 public class Flashlight : MonoBehaviour
 {
     private Light flashlight;
+    public AudioClip click;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         flashlight = GetComponent<Light>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -18,10 +21,12 @@ public class Flashlight : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && flashlight.enabled)
         {
             flashlight.enabled = false;
+            audioSource.PlayOneShot(click);
         }
         else if (Input.GetKeyDown(KeyCode.F) && !flashlight.enabled)
         {
             flashlight.enabled = true;
+            audioSource.PlayOneShot(click);
         }
         RaycastHit hit;
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
