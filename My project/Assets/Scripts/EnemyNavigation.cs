@@ -12,6 +12,7 @@ public class EnemyNavigation : MonoBehaviour
     public float wanderTimer;
     private Transform target;
     private NavMeshAgent agent;
+    private Collider myCollider;
     private float timer;
     private float speed;
     public bool lightHit;
@@ -74,8 +75,6 @@ public class EnemyNavigation : MonoBehaviour
         {
             return;
         }
-        
-        
     }
 
     public void Chase()

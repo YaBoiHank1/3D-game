@@ -39,7 +39,7 @@ public class Flashlight : MonoBehaviour
                 
                 if (flashlight.enabled == true)
                 {
-                    if (hit.collider.gameObject.GetComponent<EnemyNavigation>() != null)
+                    if (hit.collider.gameObject.GetComponent<EnemyNavigation>() != null && hit.collider.gameObject.GetComponent<EnemyNavigation>().enabled == true)
                     {
                         
                         hit.collider.gameObject.GetComponent<EnemyNavigation>().Chase();
