@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     public Collider myCollider;
     public Canvas gameOverCanvas;
     public Animator canvasAnimator;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +38,6 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator LoadGameOver()
     {
         yield return new WaitForSeconds(3);
-        
         gameOverCanvas.enabled = true;
         canvasAnimator.SetBool("FadeIn", true);
     }

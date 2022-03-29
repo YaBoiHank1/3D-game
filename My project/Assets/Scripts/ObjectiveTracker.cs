@@ -27,7 +27,7 @@ public class ObjectiveTracker : MonoBehaviour
         }
         else if (goal1Done)
         {
-            objectiveText.text = "Find 1 Cube " + collected.ToString() + "/" + goal2.ToString();
+            objectiveText.text = "Find a Spare Tire " + collected.ToString() + "/" + goal2.ToString();
         }
     }
 
