@@ -1,23 +1,23 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
-using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
     public Collider myCollider;
     public Canvas gameOverCanvas;
     public Animator canvasAnimator;
+    Rigidbody myRigidbody;
     
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
         gameOverCanvas.enabled = false;
-        canvasAnimator = FindObjectOfType<Canvas>(gameOverCanvas).GetComponent<Animator>();
-        myCollider = GetComponent<CapsuleCollider>();
+        myRigidbody = GetComponent<Rigidbody>();
         GetComponent<RigidbodyFirstPersonController>().enabled = true;
+        canvasAnimator = GetComponent<PlayerHealth>().canvasAnimator;
+        myCollider = GetComponent<CapsuleCollider>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -31,13 +31,12 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         GetComponent<RigidbodyFirstPersonController>().enabled = false;
-        transform.LookAt(FindObjectOfType <EnemyNavigation>().transform);
-        StartCoroutine(LoadGameOver());
+        transform.LookAt(FindObjectOfType<EnemyNavigation>().transform);
+        Invoke("LoadGameOver", 3f);
     }
 
-    private IEnumerator LoadGameOver()
+    private void LoadGameOver()
     {
-        yield return new WaitForSeconds(3);
         gameOverCanvas.enabled = true;
         canvasAnimator.SetBool("FadeIn", true);
     }
