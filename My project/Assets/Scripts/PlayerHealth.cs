@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public Collider myCollider;
     public Canvas gameOverCanvas;
-    public GameObject pauseCanvas;
+    public GameObject[] canvases;
     public Animator canvasAnimator;
     Rigidbody myRigidbody;
     
@@ -15,11 +15,14 @@ public class PlayerHealth : MonoBehaviour
     {
         Time.timeScale = 1;
         gameOverCanvas.enabled = false;
-        pauseCanvas.SetActive(true);
         myRigidbody = GetComponent<Rigidbody>();
         GetComponent<RigidbodyFirstPersonController>().enabled = true;
         canvasAnimator = GetComponent<PlayerHealth>().canvasAnimator;
         myCollider = GetComponent<CapsuleCollider>();
+        foreach (GameObject i in canvases)
+        {
+            gameObject.SetActive(true);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -39,7 +42,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void LoadGameOver()
     {
-        pauseCanvas.SetActive(false);
+        foreach (GameObject i in canvases)
+        {
+            gameObject.SetActive(false);
+        }
         gameOverCanvas.enabled = true;
         canvasAnimator.SetBool("FadeIn", true);
     }
