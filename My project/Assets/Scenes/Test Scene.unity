@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -1445,10 +1445,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2000000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
-      propertyPath: m_TargetTexture
+    - target: {fileID: 2956926135142086391, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: pauseCanvas
       value: 
-      objectReference: {fileID: 8400000, guid: 935b6683f08d98f48a32ac43a2ad7dd0, type: 2}
+      objectReference: {fileID: 1913693764}
     - target: {fileID: 2956926135142086391, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
       propertyPath: canvasAnimator
       value: 
@@ -1457,6 +1457,10 @@ PrefabInstance:
       propertyPath: gameOverCanvas
       value: 
       objectReference: {fileID: 1590225322}
+    - target: {fileID: 7396264316524350814, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: m_Cookie
+      value: 
+      objectReference: {fileID: 2800000, guid: 2c29c08dd1c0b6749b7cd0fcff7a29fd, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
 --- !u!1 &1571341819
@@ -1945,6 +1949,11 @@ PrefabInstance:
       objectReference: {fileID: 1705418260}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0495aba3a42918747a121ab21824de01, type: 3}
+--- !u!223 &1913693764 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 1827126637500507303, guid: 779bb9171db39804faed415adb958ec9, type: 3}
+  m_PrefabInstance: {fileID: 1827126637596165008}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1936290115 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9155474385650871396, guid: 8409eb5330e630749a342e8ca0117282, type: 3}

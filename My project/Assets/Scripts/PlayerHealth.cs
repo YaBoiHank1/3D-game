@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public Collider myCollider;
     public Canvas gameOverCanvas;
+    public GameObject pauseCanvas;
     public Animator canvasAnimator;
     Rigidbody myRigidbody;
     
@@ -14,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     {
         Time.timeScale = 1;
         gameOverCanvas.enabled = false;
+        pauseCanvas.SetActive(true);
         myRigidbody = GetComponent<Rigidbody>();
         GetComponent<RigidbodyFirstPersonController>().enabled = true;
         canvasAnimator = GetComponent<PlayerHealth>().canvasAnimator;
@@ -37,6 +39,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void LoadGameOver()
     {
+        pauseCanvas.SetActive(false);
         gameOverCanvas.enabled = true;
         canvasAnimator.SetBool("FadeIn", true);
     }

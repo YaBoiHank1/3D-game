@@ -68,7 +68,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 935b6683f08d98f48a32ac43a2ad7dd0, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 13600000}
   - component: {fileID: 11400004}
   - component: {fileID: 2956926135142086391}
+  - component: {fileID: 271998333}
   m_Layer: 0
   m_Name: RigidBodyFPSController
   m_TagString: Player
@@ -316,7 +317,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myCollider: {fileID: 0}
   gameOverCanvas: {fileID: 0}
+  pauseCanvas: {fileID: 0}
   canvasAnimator: {fileID: 0}
+--- !u!65 &271998333
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1965079575142292420
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,8 +378,8 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 55
+  m_Range: 20
+  m_SpotAngle: 70
   m_InnerSpotAngle: 5
   m_CookieSize: 10
   m_Shadows:
