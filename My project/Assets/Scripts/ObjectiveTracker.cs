@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ObjectiveTracker : MonoBehaviour
 {
@@ -40,6 +41,6 @@ public class ObjectiveTracker : MonoBehaviour
 
     public void Deposit()
     {
-        Debug.Log("You Win!!!!1!!!!!1!");
+        SceneManager.LoadScene(3);
     }
 }
