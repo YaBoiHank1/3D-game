@@ -1,47 +1,46 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ObjectiveTracker : MonoBehaviour
 {
-    public int goal1 = 5;
-    public int goal2 = 2;
-    public bool goal1Done;
-    public bool goal2Done;
+    public int goal = 5;
+    public bool goalDone;
     public Text objectiveText;
-    private int collected = 0;
+    public int collected = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        goal1Done = false;
-        goal2Done = false;
-        objectiveText.text = collected.ToString() + "/" + goal1.ToString();
+        goalDone = false;
+        objectiveText.text = collected.ToString() + "/" + goal.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!goal1Done)
+        if (!goalDone)
         {
-            objectiveText.text = "Find Gas Cans " + collected.ToString() + "/" + goal1.ToString();
+            objectiveText.text = "Find Gas Cans " + collected.ToString() + "/" + goal.ToString();
         }
-        else if (goal1Done)
+        else if (goalDone)
         {
-            objectiveText.text = "Find a Spare Tire " + collected.ToString() + "/" + goal2.ToString();
+            objectiveText.text = "Get Back to your car";
         }
     }
 
     public void ObjectiveCollected()
     {
         collected++;
-        if (collected >= goal1 && !goal1Done)
+        if (collected >= goal && !goalDone)
         {
             collected = 0;
-            goal1Done = true;
+            goalDone = true;
         }
-        if (collected >= goal2 && goal1Done)
-        {
-            goal2Done = true;
-        }
+    }
+
+    public void Deposit()
+    {
+        SceneManager.LoadScene(3);
     }
 }

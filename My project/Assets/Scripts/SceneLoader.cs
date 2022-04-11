@@ -25,4 +25,11 @@ public class SceneLoader : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void LoadLastSave()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+        Time.timeScale = 1;
+    }
 }
