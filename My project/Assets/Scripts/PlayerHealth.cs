@@ -31,6 +31,10 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
+        else if (collision.gameObject.GetComponent<EnemyNavigation>() == null)
+        {
+            return;
+        }
     }
 
     private void Die()
