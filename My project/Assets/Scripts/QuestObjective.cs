@@ -10,6 +10,7 @@ public class QuestObjective : MonoBehaviour
     public Text notEnough;
     private bool canPickUp;
     private bool canDeposit;
+    public bool active;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class QuestObjective : MonoBehaviour
         notEnough.enabled = false;
         canPickUp = false;
         canDeposit = false;
+        active = true;
     }
 
     // Update is called once per frame
@@ -30,7 +32,7 @@ public class QuestObjective : MonoBehaviour
             notEnough.enabled = false;
             FindObjectOfType<ObjectiveTracker>().ObjectiveCollected();
             canPickUp = false;
-            Destroy(gameObject);
+            active = false;
         }
         if (canDeposit == true && Input.GetKeyDown(KeyCode.E))
         {
@@ -41,6 +43,15 @@ public class QuestObjective : MonoBehaviour
             canDeposit = true;
         }
         notEnough.text = "Not enough gas. You need " + (FindObjectOfType<ObjectiveTracker>().goal - FindObjectOfType<ObjectiveTracker>().collected) + " more.";
+
+        if (active == true)
+        {
+            gameObject.SetActive(true);
+        }
+        else if (active == false)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
