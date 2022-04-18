@@ -23,8 +23,6 @@ public class Save : MonoBehaviour
         PlayerPrefs.SetFloat("enemyZ", enemy.transform.position.z);
 
         PlayerPrefs.SetInt("collected", FindObjectOfType<ObjectiveTracker>().collected);
-
-        //PlayerPrefs.SetInt("active", FindObjectsOfType<QuestObjective>().active ? 1 : 0);
     }
 
     public void LoadGame()
@@ -34,13 +32,11 @@ public class Save : MonoBehaviour
         enemy.transform.position = new Vector3(PlayerPrefs.GetFloat("enemyX"), PlayerPrefs.GetFloat("enemyY"), PlayerPrefs.GetFloat("enemyZ"));
 
         FindObjectOfType<ObjectiveTracker>().collected = PlayerPrefs.GetInt("collected");
-
-        //FindObjectsOfType<QuestObjective>().active = PlayerPrefs.GetInt("active") == 1 ? true : false;
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F5))
+        if (Input.GetKeyDown(KeyCode.F5))
         {
             SaveGame();
         }
