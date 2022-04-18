@@ -53,4 +53,6 @@ public class PlayerHealth : MonoBehaviour
         gameOverCanvas.enabled = true;
         canvasAnimator.SetBool("FadeIn", true);
     }
+
+    
 }
