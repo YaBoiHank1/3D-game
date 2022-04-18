@@ -10,7 +10,7 @@ public class QuestObjective : MonoBehaviour
     public Text notEnough;
     private bool canPickUp;
     private bool canDeposit;
-    public bool active;
+    public int on;
 
     // Start is called before the first frame update
     void Start()
@@ -20,38 +20,21 @@ public class QuestObjective : MonoBehaviour
         notEnough.enabled = false;
         canPickUp = false;
         canDeposit = false;
-        active = true;
+        on = 1;
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (canPickUp == true && Input.GetKeyDown(KeyCode.E))
-        {
-            pickupText.enabled = false;
-            notEnough.enabled = false;
-            FindObjectOfType<ObjectiveTracker>().ObjectiveCollected();
-            canPickUp = false;
-            active = false;
-        }
-        if (canDeposit == true && Input.GetKeyDown(KeyCode.E))
-        {
-            FindObjectOfType<ObjectiveTracker>().Deposit();
-        }
-        if (FindObjectOfType<ObjectiveTracker>().goalDone == true)
-        {
-            canDeposit = true;
-        }
-        notEnough.text = "Not enough gas. You need " + (FindObjectOfType<ObjectiveTracker>().goal - FindObjectOfType<ObjectiveTracker>().collected) + " more.";
-
-        if (active == true)
+    {   if (on == 1)
         {
             gameObject.SetActive(true);
         }
-        else if (active == false)
+        else if (on == 0)
         {
             gameObject.SetActive(false);
         }
+        Deposit();
+        //PickUp();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -91,5 +74,34 @@ public class QuestObjective : MonoBehaviour
                 notEnough.enabled = false;
             }
         }
+    }
+
+    private void PickUp()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (canPickUp == true)
+            {
+                //pickupText.enabled = false;
+                //notEnough.enabled = false;
+                FindObjectOfType<ObjectiveTracker>().ObjectiveCollected();
+                //canPickUp = false;
+                on = 0;
+            }
+        }
+        
+    }
+
+    private void Deposit()
+    {
+        if (canDeposit == true && Input.GetKeyDown(KeyCode.E))
+        {
+            FindObjectOfType<ObjectiveTracker>().Deposit();
+        }
+        if (FindObjectOfType<ObjectiveTracker>().goalDone == true)
+        {
+            canDeposit = true;
+        }
+        notEnough.text = "Not enough gas. You need " + (FindObjectOfType<ObjectiveTracker>().goal - FindObjectOfType<ObjectiveTracker>().collected) + " more.";
     }
 }
