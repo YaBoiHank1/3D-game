@@ -14,11 +14,7 @@ public class Save : MonoBehaviour
 
     private void Start()
     {
-        gasCan1 = GetComponent<QuestObjective>();
-        gasCan2 = GetComponent<QuestObjective>();
-        gasCan3 = GetComponent<QuestObjective>();
-        gasCan4 = GetComponent<QuestObjective>();
-        gasCan5 = GetComponent<QuestObjective>();
+
     }
 
     public void SaveGame()

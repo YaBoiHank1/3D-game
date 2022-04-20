@@ -25,16 +25,17 @@ public class QuestObjective : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   if (on == 1)
+    {
+        if (on == 1)
         {
-            gameObject.SetActive(true);
+            transform.GetChild(0).gameObject.SetActive(true);
         }
         else if (on == 0)
         {
-            gameObject.SetActive(false);
+            transform.GetChild(0).gameObject.SetActive(false);
         }
         Deposit();
-        //PickUp();
+        PickUp();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -82,10 +83,10 @@ public class QuestObjective : MonoBehaviour
         {
             if (canPickUp == true)
             {
-                //pickupText.enabled = false;
-                //notEnough.enabled = false;
+                pickupText.enabled = false;
+                notEnough.enabled = false;
                 FindObjectOfType<ObjectiveTracker>().ObjectiveCollected();
-                //canPickUp = false;
+                canPickUp = false;
                 on = 0;
             }
         }
