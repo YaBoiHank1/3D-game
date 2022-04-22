@@ -138,3 +138,5 @@ MonoBehaviour:
   wanderRadius: 50
   wanderTimer: 10
   lightHit: 0
+  audioSource: {fileID: 0}
+  chaseSFX: {fileID: 0}
