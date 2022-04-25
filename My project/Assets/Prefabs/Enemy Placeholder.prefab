@@ -137,6 +137,8 @@ MonoBehaviour:
   searchRange: 30
   wanderRadius: 50
   wanderTimer: 10
+  myRigidbody: {fileID: 0}
+  myAnimator: {fileID: 0}
   lightHit: 0
   audioSource: {fileID: 0}
   chaseSFX: {fileID: 0}

@@ -40,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         GetComponent<RigidbodyFirstPersonController>().enabled = false;
-        transform.LookAt(FindObjectOfType<EnemyNavigation>().transform);
+        transform.LookAt(FindObjectOfType<LookAt>().transform);
         Invoke("LoadGameOver", 3f);
     }
 

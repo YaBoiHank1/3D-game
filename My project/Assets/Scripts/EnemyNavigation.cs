@@ -13,18 +13,23 @@ public class EnemyNavigation : MonoBehaviour
     private Transform target;
     private NavMeshAgent agent;
     private Collider myCollider;
+    public Rigidbody myRigidbody;
+    public Animator myAnimator;
     private float timer;
     private float speed;
     public bool lightHit;
     public AudioSource audioSource;
     public AudioClip chaseSFX;
     Vector3 home;
+
     // Start is called before the first frame update
     void Start()
     {
         home = transform.position;
         speed = GetComponent<NavMeshAgent>().speed;
-        audioSource = GetComponent<AudioSource>();
+        myRigidbody = GetComponent<Rigidbody>();
+        myAnimator = GetComponent<Animator>();
+        audioSource = GetComponent < AudioSource>();
     }
 
     private void OnEnable()
@@ -35,8 +40,8 @@ public class EnemyNavigation : MonoBehaviour
 
     void Update()
     {
+        float distance = Vector3.Distance(transform.position, player.transform.position);
         timer += Time.deltaTime;
-
         if (!lightHit)
         {
             if (timer >= wanderTimer)
@@ -45,7 +50,7 @@ public class EnemyNavigation : MonoBehaviour
                 agent.SetDestination(newPos);
                 timer = 0;
             }
-            float distance = Vector3.Distance(transform.position, player.transform.position);
+            
             if (distance > chaseRange && distance < searchRange)
             {
                 StartCoroutine(Search());
@@ -54,7 +59,6 @@ public class EnemyNavigation : MonoBehaviour
             }
             if (distance < chaseRange)
             {
-                
                 GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
                 GetComponent<NavMeshAgent>().speed = 6f;
                 if (!audioSource.isPlaying)
@@ -75,10 +79,28 @@ public class EnemyNavigation : MonoBehaviour
         {
             return;
         }
+
+        if (myRigidbody.velocity.magnitude == 0)
+        {
+            myAnimator.SetTrigger("Idle");
+        }
+        if (GetComponent<NavMeshAgent>().speed == 2f)
+        {
+            myAnimator.SetTrigger("Walk");
+        }
+        if (GetComponent<NavMeshAgent>().speed == 3f)
+        {
+            myAnimator.SetTrigger("Walk");
+        }
+        if (GetComponent<NavMeshAgent>().speed == 6f)
+        {
+            myAnimator.SetTrigger("Run");
+        }
     }
 
     public void Chase()
     {
+        myAnimator.SetTrigger("Run");
         lightHit = true;
         GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
         GetComponent<NavMeshAgent>().speed = 6f;
@@ -100,6 +122,7 @@ public class EnemyNavigation : MonoBehaviour
 
     private IEnumerator Search()
     {
+        myAnimator.SetTrigger("Walk");
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (distance < searchRange && distance > chaseRange)
         {

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Jumpscare : MonoBehaviour
 {
-    
+    public Animator myAnimator;
     // Start is called before the first frame update
     void Start()
     {
-        //gameObject.GetComponent<EnemyNavigation>().enabled = true;
+        myAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,6 +22,10 @@ public class Jumpscare : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerHealth>() != null)
         {
             gameObject.GetComponent<EnemyNavigation>().enabled = false;
+            myAnimator.SetBool("Jumpscare", true);
+            myAnimator.SetBool("Walk", false);
+            myAnimator.SetBool("Run", false);
+            myAnimator.SetBool("Idle", false);
         }
     }
 }
