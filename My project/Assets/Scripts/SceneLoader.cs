@@ -32,4 +32,9 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex);
         Time.timeScale = 1;
     }
+
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene(4);
+    }
 }
