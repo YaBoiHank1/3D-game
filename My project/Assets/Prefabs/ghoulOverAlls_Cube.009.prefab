@@ -6997,9 +6997,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  chaseRange: 10
-  searchRange: 30
-  wanderRadius: 50
+  chaseRange: 20
+  searchRange: 100
+  wanderRadius: 200
   wanderTimer: 10
   myRigidbody: {fileID: 0}
   myAnimator: {fileID: 0}
